@@ -41,7 +41,9 @@ public class CPI_Application
            }
        }
 
-       public
+       public static void deposit() { // Need to
+
+   }
 
 
 
