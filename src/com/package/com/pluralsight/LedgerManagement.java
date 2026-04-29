@@ -56,4 +56,22 @@ public class LedgerManagement
             System.out.println("Could not update file.");
         }
     }
+
+    public ArrayList<Transaction> displayAll()
+    {
+        return transactions;
+    }
+
+    public ArrayList<Transaction> displayDeposits()
+    {
+        ArrayList<Transaction> allDeposits = new ArrayList<>();
+        for ()
+    }
+
+    public ArrayList<Transaction> displayPayments()
+    {
+
+
+    }
+
 }
