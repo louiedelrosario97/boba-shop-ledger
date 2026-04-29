@@ -5,7 +5,7 @@
 // DONE: Declare transactions ArrayList
 // DONE: Build constructor that calls loadTransactions()
 // DONE: loadTransactions() — reads CSV line by line, .split "|", creates Transaction objects
-// TODO: addTransaction() —  BufferedWriter with (transaction_history.csv, true)
+// DONE: addTransaction() —  BufferedWriter with (transaction_history.csv, true)
 // TODO: getAll() — return full transactions list
 // TODO: getDeposits() — return transactions where all inputs must be > 0
 // TODO: getPayments() — return transactions where all inputs must be < 0
@@ -17,10 +17,12 @@
 
 
 // ------------------------------------- Main ---------------------------------------------
-// TODO: Fix bug — menu shows "E) Exit" but switch listens for "X"
-// TODO: Create a LedgerManagement object at the top of the class
-// TODO: deposit() — prompt description, vendor, amount — use LocalDate/LocalTime — save via addTransaction()
-// TODO: payment() — same as deposit() but amount stored as negative
+// DONE: Setup main()
+// DONE: main() calls homeScreen()
+// DONE: homeScreen() — while loop with menu and switch
+// DONE: Create a LedgerManagement object at the top of the class
+// TODO: [ IN PROGRESS ] deposit() — prompt description, vendor, amount — use LocalDate/LocalTime — save via addTransaction()
+// TODO: [ IN PROGRESS ] payment() — same as deposit() but use switch to make "amount" negative
 // TODO: ledgerScreen() — while loop with menu, switch calls displayTransactions() or reportsScreen()
 // TODO: reportsScreen() — while loop with menu, switch calls matching filter methods
 // TODO: displayTransactions() — print header row, loop backwards, print each transaction

@@ -40,13 +40,14 @@ public class Main
                default:  System.out.println("Invalid option, silly billy.");
            }
        }
-       System.out.println("Saiyonara!");
+       System.out.println("Sayonara!");
    }
 
-    // deposit() use LocalDate.now
+    // deposit() use LocalDate/Time.now
     public static void deposit()
     {
-    System.out.println("Deposit Information:");
+    System.out.println("DEPOSIT INFO:");
+    System.out.println("-------------------");
     System.out.print("Description: ");
     String description = scanner.nextLine();
 
@@ -69,8 +70,22 @@ public class Main
     // payment()
     public static void payment()
     {
+        System.out.print("Description: ");
+        String description = scanner.nextLine();
 
+        System.out.print("Vendor: ");
+        String vendor = scanner.nextLine();
 
+        System.out.print("Amount: ");
+        double amount = Double.parseDouble(scanner.nextLine());
+
+        String date = LocalDate.now().toString();
+        String time = LocalDate.now().toString();
+
+        Transaction newTransaction = new Transaction(date, time, description, vendor, amount);
+        ledger.addTransaction(newTransaction);
+
+        System.out.println("Payment added successfully!");
     }
 
     // ledgerScreen()

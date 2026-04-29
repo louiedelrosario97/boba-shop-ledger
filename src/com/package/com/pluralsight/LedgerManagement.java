@@ -3,9 +3,7 @@
 // ---------------------------------------------------------------------------------------------------
 package com.pluralsight;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class LedgerManagement
@@ -46,11 +44,16 @@ public class LedgerManagement
         }
     }
 
-    public void addTransaction(Transaction newTransaction) //BufferedWriter,
+    public void addTransaction(Transaction newTransaction) // Use BufferedWriter
     {
         transactions.add(newTransaction);
-
-
+        try
+        {       // .get in order of the .csv file
+            BufferedWriter writer = new BufferedWriter(new FileWriter("transaction_history.csv", true)); // "true" = append mode, so we don't overwrite the file.
+            writer.write(newTransaction.getDate()+ "|" + newTransaction.getTime() + "|" + newTransaction.getDescription() + "|" + newTransaction.getVendor() + "|" + newTransaction.getAmount() + "\n");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Could not update file.");
+        }
     }
-
 }
