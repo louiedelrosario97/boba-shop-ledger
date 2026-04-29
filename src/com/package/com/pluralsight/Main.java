@@ -64,7 +64,7 @@ public class Main
             {
                 case "A": ledger.displayAll();      break;
                 case "D": ledger.displayDeposits(); break;
-                case "P": ledger.listPayments(); break;
+                case "P": ledger.displayPayments(); break;
                 case "R": reportsScreen();          break;
                 case "H": homeScreen();             break;
                 case "X": runningLoop = false;      break;

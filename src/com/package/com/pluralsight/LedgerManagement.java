@@ -4,6 +4,7 @@
 package com.pluralsight;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class LedgerManagement
@@ -47,7 +48,6 @@ public class LedgerManagement
     public void addTransaction(Transaction t)
     {
         transactions.add(t);
-
         try
         {
             BufferedWriter bWriter = new BufferedWriter(new FileWriter("transaction_history.csv", true));  // "true" = append mode, so we don't overwrite the file.
@@ -57,35 +57,128 @@ public class LedgerManagement
             System.out.println("Could not update file.");
         }
     }
-// --------------------------------------------- listAll() ArrayList -----------------------------------------------
-    public ArrayList<Transaction> displayAll() { return transactions; }
-// --------------------------------------------- listDeposits() ArrayList ------------------------------------------
-    public ArrayList<Transaction> listDeposits()
+// ----------------------------------------- printHeader() ---------------------------------------------------------
+    private void printHeader()
     {
-        ArrayList<Transaction> allDeposits = new ArrayList<>();
-
+        System.out.println(" Date | Time | Description | Vendor | Amount ");
+        System.out.println("-------------------------------------------");
+    }
+// --------------------------------------------- displayAll() ---------------------------------------------------------
+    public void displayAll()
+    {
+        printHeader();
+        for (int i = transactions.size() - 1; i >= 0; i--)
+        {
+            System.out.println(transactions.get(i));
+        }
+    }
+// --------------------------------------------- displayDeposits() ----------------------------------------------------
+    public void displayDeposits()
+    {
+        printHeader();
         for (Transaction t : transactions)
         {
-            if (t.getAmount() > 0)
-            {
-                allDeposits.add(t);
-            }
+            System.out.println(t);
         }
-    return allDeposits;
     }
-// --------------------------------------------- listPayments() ArrayList ------------------------------------------
-    public ArrayList<Transaction> listPayments()
+// --------------------------------------------- displayPayments() ----------------------------------------------------
+    public void displayPayments()
     {
-        ArrayList<Transaction> allPayments = new ArrayList<>();
-
+        printHeader();
         for (Transaction t : transactions)
         {
             if (t.getAmount() < 0)
             {
-                allPayments.add(t);
+                System.out.println(t);
             }
         }
-    return allPayments;
     }
+    // --------------------------------------------- monthToDate() ----------------------------------------------------
+    public void monthToDate()
+    {
+        printHeader();
+        LocalDate today = LocalDate.now();
 
+        for (int i = transactions.size() - 1; i >= 0; i--)
+        {
+            Transaction t = transactions.get(i);
+            LocalDate date = LocalDate.parse(t.getDate());
+
+            if (date.getYear() == today.getYear() &&
+                    date.getMonthValue() == today.getMonthValue())
+            {
+                System.out.println(t);
+            }
+        }
+    }
+    // --------------------------------------------- previousMonth() ----------------------------------------------------
+    public void previousMonth()
+    {
+        printHeader();
+        LocalDate prevMonth = LocalDate.now().minusMonths(1);
+
+        for (int i = transactions.size() - 1; i >= 0; i--)
+        {
+            Transaction t = transactions.get(i);
+            LocalDate date = LocalDate.parse(t.getDate());
+
+            if (date.getYear() == prevMonth.getYear() &&
+                    date.getMonthValue() == prevMonth.getMonthValue())
+            {
+                System.out.println(t);
+            }
+        }
+    }
+    // --------------------------------------------- yearToDate() ----------------------------------------------------
+    public void yearToDate()
+    {
+        printHeader();
+        int currentYear = LocalDate.now().getYear();
+
+        for (int i = transactions.size() - 1; i >= 0; i--)
+        {
+            Transaction t = transactions.get(i);
+            LocalDate date = LocalDate.parse(t.getDate());
+
+            if (date.getYear() == currentYear)
+            {
+                System.out.println(t);
+            }
+        }
+    }
+    // --------------------------------------------- previousYear() ----------------------------------------------------
+    public void previousYear()
+    {
+        System.out.println(" Date | Time | Description | Vendor | Amount ");
+        System.out.println("-------------------------------------------");
+
+        int previousYear = LocalDate.now().getYear() - 1;
+
+        for (int i = transactions.size() - 1; i >= 0; i--)
+        {
+            Transaction t = transactions.get(i);
+            LocalDate date = LocalDate.parse(t.getDate());
+
+            if (date.getYear() == previousYear)
+            {
+                System.out.println(t);
+            }
+        }
+    }
+    public void searchByVendor(String vendorName)
+    {
+        System.out.println("Date | Time | Description | Vendor | Amount");
+        System.out.println("-------------------------------------------");
+
+        for (int i = transactions.size() - 1; i >= 0; i--)
+        {
+            Transaction t = transactions.get(i);
+
+            if (t.getVendor().equalsIgnoreCase(vendorName))
+            {
+                System.out.println(t);
+            }
+        }
+    }
 }
+
