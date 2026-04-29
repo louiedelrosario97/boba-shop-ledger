@@ -21,8 +21,8 @@
 // DONE: main() calls homeScreen()
 // DONE: homeScreen() — while loop with menu and switch
 // DONE: Create a LedgerManagement object at the top of the class
-// TODO: [ IN PROGRESS ] deposit() — prompt description, vendor, amount — use LocalDate/LocalTime — save via addTransaction()
-// TODO: [ IN PROGRESS ] payment() — same as deposit() but use switch to make "amount" negative
+// DONE: deposit() — prompt description, vendor, amount — use LocalDate/LocalTime — save via addTransaction()
+// DONE: payment() — same as deposit() but use switch to make "amount" negative
 // TODO: [ IN PROGRESS ] Add code for inputs from the user that are not double values for deposit() and payment()
 // TODO: ledgerScreen() — while loop with menu, switch calls displayTransactions() or reportsScreen()
 // TODO: reportsScreen() — while loop with menu, switch calls matching filter methods

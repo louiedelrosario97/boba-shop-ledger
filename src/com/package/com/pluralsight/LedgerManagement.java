@@ -14,7 +14,7 @@ public class LedgerManagement
     {
         loadTransactions();
     }
-// --------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------- loadTransactions() --------------------------------------------------------
     private void loadTransactions()
     {           // Plug in file/buff reader, if statement that includes "no data" possibility
         try
@@ -43,24 +43,24 @@ public class LedgerManagement
             System.out.println("No transaction data available.");
         }
     }
-// --------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------- addTransaction() ---------------------------------------------------------
     public void addTransaction(Transaction t)
     {
         transactions.add(t);
 
         try
-        {               // ---- "true" = append mode, so we don't overwrite the file. ------------------------------vvv
-            BufferedWriter bWriter = new BufferedWriter(new FileWriter("transaction_history.csv", true));
+        {
+            BufferedWriter bWriter = new BufferedWriter(new FileWriter("transaction_history.csv", true));  // "true" = append mode, so we don't overwrite the file.
             bWriter.write(t.getDate()+ "|" + t.getTime() + "|" + t.getDescription() + "|" + t.getVendor() + "|" + t.getAmount() + "\n");
             bWriter.close();
         } catch (IOException e) {
             System.out.println("Could not update file.");
         }
     }
-// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------- listAll() ArrayList -----------------------------------------------
     public ArrayList<Transaction> displayAll() { return transactions; }
-// --------------------------------------------------------------------------------------------------------------------
-    public ArrayList<Transaction> displayDeposits()
+// --------------------------------------------- listDeposits() ArrayList ------------------------------------------
+    public ArrayList<Transaction> listDeposits()
     {
         ArrayList<Transaction> allDeposits = new ArrayList<>();
 
@@ -73,8 +73,8 @@ public class LedgerManagement
         }
     return allDeposits;
     }
-// --------------------------------------------------------------------------------------------------------------------
-    public ArrayList<Transaction> displayPayments()
+// --------------------------------------------- listPayments() ArrayList ------------------------------------------
+    public ArrayList<Transaction> listPayments()
     {
         ArrayList<Transaction> allPayments = new ArrayList<>();
 
@@ -87,4 +87,5 @@ public class LedgerManagement
         }
     return allPayments;
     }
+
 }
