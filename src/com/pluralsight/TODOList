@@ -1,0 +1,47 @@
+// ---------------------------------- Detail Tweaks --------------------------------------
+// TODO: Add code block(s) for when user inputs wrong variable type
+// DONE: Fix code to add "$" to amount
+// TODO: Add feature in deposit/payment that verifies the data before submitting it into .csv
+// TODO: Add code within deposit() and payment() to prompt "Make Another -----?"
+// DONE: Format categories so the columns align properly
+// DONE: Format time (remove nanoseconds, format to AM/PM time)
+// TODO: Add if there is no data available to display in each method
+// DONE: Fix code, time is printing as date
+
+// ---------------------------------- LedgerManager --------------------------------------
+// DONE: Create LedgerManagement class
+// DONE: Declare transactions ArrayList
+// DONE: Build constructor that calls loadTransactions()
+// DONE: loadTransactions() — reads CSV line by line, split on "|", creates Transaction objects
+// DONE: addTransaction() — BufferedWriter with "append mode (true)""
+// DONE: printHeader() — header to use on all displays
+// DONE: displayAll() — prints all transactions
+// DONE: displayDeposits() — prints deposits (amount > 0)
+// DONE: displayPayments() — prints payments (amount < 0)
+// DONE: monthToDate() — filters by current month and year
+// DONE: previousMonth() — filters using minusMonths(1)
+// DONE: yearToDate() — filters by current year
+// DONE: previousYear() — filters by current year - 1
+// DONE: searchByVendor() — filters by vendor name using .contains
+
+// TODO: .parse LocalDate in all of the filter methods to MMMM d, yyyy
+
+
+// ------------------------------------- Main ---------------------------------------------
+// DONE: Setup main()
+// DONE: main() calls homeScreen()
+// DONE: homeScreen() — while loop with switch
+// DONE: Create a LedgerManagement object at the top of the class to call within main()
+// DONE: deposit() — prompt description, vendor, amount — use LocalDate/LocalTime — save via addTransaction()
+// DONE: payment() — same as deposit() but amount stored as negative
+// DONE: ledgerScreen() — while loop with switch, calls display methods and reportsScreen()
+// DONE: reportsScreen() — while loop with switch, calls matching filter methods
+
+
+
+// ---------------------------------- Transaction -----------------------------------------
+// DONE: Created Transaction class
+// DONE: Declared all five data members
+// DONE: Generate constructors, getters, and setters
+// DONE: Added toString()
+
