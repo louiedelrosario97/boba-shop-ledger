@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Main
 {
    static Scanner scanner = new Scanner(System.in);
-   static LedgerManagement ledger = new LedgerManagement();
+   static LedgerManager ledger = new LedgerManager();
 
     static void main(String[] args)
     {
@@ -95,14 +95,18 @@ public class Main
 
             switch(choice)
             {
-                case "1": ledger.monthToDate();  break;
-                case "2": ledger.previousMonth();break;
-                case "3": ledger.yearToDate();   break;
-                case "4": ledger.previousYear(); break;
-                case "5": ledger.searchByVendor; break;
-                case "0": ledgerScreen();        break;
-                case "H": homeScreen();          break;
-                case "X": runningLoop = false;   break;
+                case "1": ledger.monthToDate();   break;
+                case "2": ledger.previousMonth(); break;
+                case "3": ledger.yearToDate();    break;
+                case "4": ledger.previousYear();  break;
+                case "5":
+                    System.out.print("Enter vendor name: ");
+                    String vendorName = scanner.nextLine();
+                    ledger.searchByVendor(vendorName);
+                                                  break;
+                case "0": ledgerScreen();         break;
+                case "H": homeScreen();           break;
+                case "X": runningLoop = false;    break;
 
                 default: System.out.println("Invalid option. Please try again.");
             }
@@ -128,7 +132,7 @@ public class Main
             System.out.println("Must be a positive value, please try again.");
             System.out.print("Amount: " );
             amount = Double.parseDouble(scanner.nextLine());
-        }                                                                                                                // TODO: Add code for inputs from the user that are not double values
+        }
 
         String date = LocalDate.now().toString();
         String time = LocalTime.now().toString();
@@ -155,7 +159,7 @@ public class Main
             System.out.println("Must be a negative value, please try again.");
             System.out.print("Amount: ");
             amount = Double.parseDouble(scanner.nextLine());
-        }                                                                                                                // TODO: Add code for inputs from the user that are not double values
+        }
 
         String date = LocalDate.now().toString();
         String time = LocalDate.now().toString();

@@ -7,11 +7,11 @@ import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class LedgerManagement
+public class LedgerManager
 {
    static private final ArrayList<Transaction> transactions = new ArrayList<>();
 
-    public LedgerManagement()
+    public LedgerManager()
     {
         loadTransactions();
     }
@@ -78,7 +78,7 @@ public class LedgerManagement
         printHeader();
         for (Transaction t : transactions)
         {
-            System.out.println(t);
+            System.out.println(t.getAmount() > 0);
         }
     }
 // --------------------------------------------- displayPayments() ----------------------------------------------------
@@ -171,7 +171,7 @@ public class LedgerManagement
         {
             Transaction t = transactions.get(i);
 
-            if (t.getVendor().equalsIgnoreCase(vendorName))
+            if (t.getVendor().toLowerCase().contains(vendorName.toLowerCase()))
             {
                 System.out.println(t);
             }

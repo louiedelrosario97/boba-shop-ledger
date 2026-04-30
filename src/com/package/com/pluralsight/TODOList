@@ -1,37 +1,38 @@
+// ---------------------------------- Detail Tweaks --------------------------------------
+// TODO: Add code block(s) for when user inputs wrong variable type
 
 // ---------------------------------- LedgerManager --------------------------------------
-// DONE: Create LedgerManager class
-// DONE: Declare FILE_NAME constant
+// DONE: Create LedgerManagement class
 // DONE: Declare transactions ArrayList
 // DONE: Build constructor that calls loadTransactions()
-// DONE: loadTransactions() — reads CSV line by line, .split "|", creates Transaction objects
-// DONE: addTransaction() —  BufferedWriter with (transaction_history.csv, true)
-// TODO: getAll() — return full transactions list
-// TODO: getDeposits() — return transactions where all inputs must be > 0
-// TODO: getPayments() — return transactions where all inputs must be < 0
-// TODO: getMonthToDate() — return transactions matching current month and year
-// TODO: getPreviousMonth() — same but for last month using .minusMonths(1)
-// TODO: getYearToDate() — return transactions matching current year
-// TODO: getPreviousYear() — return transactions where year == current year - 1
-// TODO: searchByVendor() — return transactions matching vendor name, use equalsIgnoreCase()
+// DONE: loadTransactions() — reads CSV line by line, split on "|", creates Transaction objects
+// DONE: addTransaction() — BufferedWriter with "append mode (true)""
+// DONE: printHeader() — header to use on all displays
+// DONE: displayAll() — prints all transactions
+// DONE: displayDeposits() — prints deposits (amount > 0)
+// DONE: displayPayments() — prints payments (amount < 0)
+// DONE: monthToDate() — filters by current month and year
+// DONE: previousMonth() — filters using minusMonths(1)
+// DONE: yearToDate() — filters by current year
+// DONE: previousYear() — filters by current year - 1
+// DONE: searchByVendor() — filters by vendor name using .contains
 
 
 // ------------------------------------- Main ---------------------------------------------
 // DONE: Setup main()
 // DONE: main() calls homeScreen()
-// DONE: homeScreen() — while loop with menu and switch
-// DONE: Create a LedgerManagement object at the top of the class
+// DONE: homeScreen() — while loop with switch
+// DONE: Create a LedgerManagement object at the top of the class to call within main()
 // DONE: deposit() — prompt description, vendor, amount — use LocalDate/LocalTime — save via addTransaction()
-// DONE: payment() — same as deposit() but use switch to make "amount" negative
-// TODO: [ IN PROGRESS ] Add code for inputs from the user that are not double values for deposit() and payment()
-// TODO: ledgerScreen() — while loop with menu, switch calls displayTransactions() or reportsScreen()
-// TODO: reportsScreen() — while loop with menu, switch calls matching filter methods
-// TODO: displayTransactions() — print header row, loop backwards, print each transaction
+// DONE: payment() — same as deposit() but amount stored as negative
+// DONE: ledgerScreen() — while loop with switch, calls display methods and reportsScreen()
+// DONE: reportsScreen() — while loop with switch, calls matching filter methods
 
 
 
-// ---------------------------------- Transaction ---------------------------------------------
+// ---------------------------------- Transaction -----------------------------------------
 // DONE: Created Transaction class
 // DONE: Declared all five data members
 // DONE: Generate constructors, getters, and setters
 // DONE: Added toString()
+
