@@ -140,7 +140,7 @@ public class Main
         while (amount < 0)
         {
             System.out.println();
-            System.out.println("Must be a positive value, please try again.");
+            System.out.println("Deposit must be a positive value, please try again.");
             System.out.print("Amount: " );
             amount = Double.parseDouble(scanner.nextLine());
         }
@@ -172,7 +172,7 @@ public class Main
         while (amount > 0)
         {
             System.out.println();
-            System.out.println("Must be a negative value, please try again.");
+            System.out.println("Payment must be a negative value, please try again.");
             System.out.print("Amount: ");
             amount = Double.parseDouble(scanner.nextLine());
         }

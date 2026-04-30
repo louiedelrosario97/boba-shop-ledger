@@ -60,8 +60,7 @@ public class LedgerManager
 // ----------------------------------------- printHeader() ---------------------------------------------------------
     private void printHeader()
     {
-        System.out.println();
-        System.out.println(" Date | Time | Description | Vendor | Amount ");
+        System.out.printf("%-14s | %-11s | %-20s | %-20s | %s%n", "Date", "Time", "Description", "Vendor", "Amount");
         System.out.println("-------------------------------------------");
     }
 // --------------------------------------------- displayAll() ---------------------------------------------------------
