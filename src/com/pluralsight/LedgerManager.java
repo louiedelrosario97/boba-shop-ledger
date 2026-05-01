@@ -5,6 +5,7 @@ package com.pluralsight;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class LedgerManager
@@ -112,7 +113,8 @@ public class LedgerManager
         for (int i = transactions.size() - 1; i >= 0; i--)
         {
             Transaction t = transactions.get(i);
-            LocalDate date = LocalDate.parse(t.getDate());
+            DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+            LocalDate date = LocalDate.parse(t.getDate(), dtFormatter);
             // if statement filters for elements that have the same year and month as 'now'
             if (date.getYear() == now.getYear() && date.getMonthValue() == now.getMonthValue())
             {

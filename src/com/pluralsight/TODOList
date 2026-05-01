@@ -1,7 +1,7 @@
 // -------------------------------- [ IMPORTANT TASKS ] ----------------------------------
 // DONE: Add try-catch in deposit() & payment() for 'amount' user input.
 // DONE: Add try-catch in deposit() & payment() for 'date' user input.
-// TODO: .parse LocalDate in all of the filter methods to MMMM d, yyyy
+// TODO: [ IN-PROGRESS ] Plug in datetimeformatter in all the report-filter methods to MMMM d, yyyy
 // DONE: Fix code, time is printing as date
 
 // ---------------------------------- Detail Tweaks --------------------------------------
