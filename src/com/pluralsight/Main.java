@@ -5,7 +5,6 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-
 public class Main
 {
    static Scanner scanner = new Scanner(System.in);
@@ -23,10 +22,10 @@ public class Main
        while(runningLoop)
        {
            System.out.println();
-           System.out.println(" LEDGER HOMESCREEN ");
+           System.out.println(" BOBA TEA ACCOUNTING ");
            System.out.println("-------------------");
-           System.out.println("D) Add Deposit");
-           System.out.println("P) Add Payment");
+           System.out.println("S) Record Sale");
+           System.out.println("E) Record Expense");
            System.out.println("L) Open Ledger");
            System.out.println("X) Close App");
            System.out.print("Choose option: ");
@@ -34,8 +33,8 @@ public class Main
 
            switch (choice)
            {
-               case "D": deposit();           break;
-               case "P": payment();           break;
+               case "S": sale();              break;
+               case "E": expense();           break;
                case "L": ledgerScreen();      break;
                case "X": runningLoop = false; break;
                default:
@@ -44,7 +43,7 @@ public class Main
            }
        }
        System.out.println();
-       System.out.println("Sayonara!");
+       System.out.println("Boba Tea Ledger shutting down...");
    }
     // ---------------------------------------- ledgerScreen() --------------------------------------------------------
     public static void ledgerScreen()
@@ -54,10 +53,10 @@ public class Main
         while (runningLoop)
         {
             System.out.println();
-            System.out.println("---- LEDGER ----");
+            System.out.println("---- BOBA TEA LEDGER ----");
             System.out.println("A) Display All");
-            System.out.println("D) Display Deposit History");
-            System.out.println("P) Display Payment History");
+            System.out.println("S) Display Sale History");
+            System.out.println("E) Display Expense History");
             System.out.println("R) Report Search");
             System.out.println("H) (Back) to Home Screen");
             System.out.println("X) Close App");
@@ -67,8 +66,8 @@ public class Main
             switch (choice)
             {
                 case "A": ledger.displayAll();      break;
-                case "D": ledger.displayDeposits(); break;
-                case "P": ledger.displayPayments(); break;
+                case "S": ledger.displaySales(); break;
+                case "E": ledger.displayExpenses(); break;
                 case "R": reportsScreen();          break;
                 case "H": homeScreen();             break;
                 case "X": runningLoop = false;      break;
@@ -79,7 +78,7 @@ public class Main
             }
         }
         System.out.println();
-        System.out.println("Sayonara!");
+        System.out.println("Boba Tea Ledger shutting down...");
     }
     // --------------------------------------------- reportsScreen() --------------------------------------------------
     public static void reportsScreen()
@@ -94,7 +93,7 @@ public class Main
             System.out.println("2) Previous Month");
             System.out.println("3) Year To Date");
             System.out.println("4) Previous Year");
-            System.out.println("5) Search by Vendor");
+            System.out.println("5) Search by Customer/Vendor");
             System.out.println("0) (Back) to Ledger");
             System.out.println("H) (Back) to Home Screen");
             System.out.println("X) Close App");
@@ -108,7 +107,7 @@ public class Main
                 case "3": ledger.yearToDate();    break;
                 case "4": ledger.previousYear();  break;
                 case "5":
-                    System.out.print("Vendor Name: ");
+                    System.out.print("Customer/Vendor Name: ");
                     String vendorName = scanner.nextLine();
                     ledger.searchByVendor(vendorName);
                                                   break;
@@ -122,17 +121,17 @@ public class Main
             }
         }
         System.out.println();
-        System.out.println("Sayonara!");
+        System.out.println("Boba Tea Ledger shutting down...");
     }
-    // ---------------------------------------- deposit() -------------------------------------------------------------
-    public static void deposit()
+    // ---------------------------------------- sale() ----------------------------------------------------------------
+    public static void sale()
     {
         System.out.println();
-        System.out.println("DEPOSIT INFO:");
+        System.out.println("NEW SALE:");
         System.out.println("-------------------");
 
         DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy"); // Moved out of try-catch. Now in scope of 'Transaction newTransaction'
-        LocalDate depositDate = null;
+        LocalDate saleDate = null;
         boolean dateInput = false;
         while (!dateInput) // LOGIC: By default the user input is false. If user enters a valid value for the DateTimeFormatter, then dateInput = true, ending the loop.
         {
@@ -140,7 +139,7 @@ public class Main
             try
             {
                 String date = scanner.nextLine();
-                depositDate = LocalDate.parse(date, dtFormatter);
+                saleDate = LocalDate.parse(date, dtFormatter);
                 dateInput = true;
             }
 
@@ -153,24 +152,24 @@ public class Main
 
         String time = LocalTime.now().format(DateTimeFormatter.ofPattern("hh:mm:ss a")); // "hh:mm:ss a" creates 12-hour AM/PM format
 
-        System.out.print("Description: ");
+        System.out.print("Item Sold: ");
         String description = scanner.nextLine();
 
-        System.out.print("Vendor: ");
+        System.out.print("Customer: ");
         String vendor = scanner.nextLine();
 
         double amount = 0;
         boolean amountInput = false;
         while (!amountInput)
         {
-            System.out.print("Deposit Amount: $");
+            System.out.print("Sale Amount: $");
             try
             {
                 amount = Double.parseDouble(scanner.nextLine());
                 if (amount < 0)
                 {
                     System.out.println();
-                    System.out.println("Deposit must be a positive value, please try again.");
+                    System.out.println("Sale must be a positive value, please try again.");
                 }
                 else { amountInput = true; }
             }
@@ -182,23 +181,23 @@ public class Main
             }
         }
 
-        Transaction newTransaction = new Transaction(depositDate.format(dtFormatter), time, description, vendor, amount);
+        Transaction newTransaction = new Transaction(saleDate.format(dtFormatter), time, description, vendor, amount);
         ledger.addTransaction(newTransaction);
 
         System.out.println();
-        System.out.println("Deposit added successfully! Returning to Homescreen...");
+        System.out.println("Sale added successfully! Returning to Homescreen...");
     }
-    // ---------------------------------------- payment() -------------------------------------------------------------
-    public static void payment()
+    // ---------------------------------------- expense() -------------------------------------------------------------
+    public static void expense()
     {
         System.out.println();
-        System.out.println("PAYMENT INFO:");
+        System.out.println("EXPENSE INFO:");
         System.out.println("-------------------");
 
         DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         LocalDate paymentDate = null;
         boolean dateInput = false;
-        while (!dateInput) // LOGIC: By default the user input is false. If user enters a valid value for the DateTimeFormatter, then dateInput = true, ending the loop.
+        while (!dateInput) // LOGIC: same as sale()
         {
             System.out.print("Date (MM/DD/YYYY): ");
             try
@@ -227,14 +226,14 @@ public class Main
         boolean amountInput = false;
         while (!amountInput)
         {
-            System.out.print("Payment Amount: $");
+            System.out.print("Expense Amount: $");
             try
             {
                 amount = Double.parseDouble(scanner.nextLine());
                 if (amount > 0)
                 {
                     System.out.println();
-                    System.out.println("Payment must be a negative value, please try again.");
+                    System.out.println("Expense must be a negative value, please try again.");
                 }
                 else { amountInput = true; }
             }
@@ -250,6 +249,6 @@ public class Main
         ledger.addTransaction(newTransaction);
 
         System.out.println();
-        System.out.println("Payment added successfully! Returning to Homescreen...");
+        System.out.println("Expense added successfully! Returning to Homescreen...");
     }
 }

@@ -22,7 +22,7 @@ public class LedgerManager
     {
         try
         {
-            FileReader fReader = new FileReader("transaction_history.csv");
+            FileReader fReader = new FileReader("bobashop_transactions.csv");
             BufferedReader bReader = new BufferedReader(fReader);
 
             String line = bReader.readLine();
@@ -41,10 +41,7 @@ public class LedgerManager
                 line = bReader.readLine();
             }
             bReader.close();
-        } catch (IOException e)
-        {
-            System.out.println("No transaction data available.");
-        }
+        } catch (IOException e) { System.out.println("No transaction data available."); }
     }
 // ----------------------------------------- addTransaction() ---------------------------------------------------------
     public void addTransaction(Transaction t)
@@ -52,17 +49,16 @@ public class LedgerManager
         transactions.add(t);
         try
         {
-            BufferedWriter bWriter = new BufferedWriter(new FileWriter("transaction_history.csv", true));  // "true" = append mode, so we don't overwrite the file.
+            BufferedWriter bWriter = new BufferedWriter(new FileWriter("bobashop_transactions.csv", true));  // "true" = append mode, so we don't overwrite the file.
             bWriter.write(t.getDate()+ "|" + t.getTime() + "|" + t.getDescription() + "|" + t.getVendor() + "|" + t.getAmount() + "\n");
             bWriter.close();
-        } catch (IOException e) {
-            System.out.println("Could not update file.");
         }
+        catch (IOException e) { System.out.println("Could not update file."); }
     }
 // ----------------------------------------- printHeader() ---------------------------------------------------------
     private void printHeader()
     {
-        System.out.printf("%-14s | %-11s | %-20s | %-20s | %s%n", "Date", "Time", "Description", "Vendor", "Amount");
+        System.out.printf("%-14s | %-11s | %-20s | %-15s | %s%n", "Date", "Time", "Description", "Customer/Vendor", "Amount");
         System.out.println("--------------------------------------------------------------------------------------");
     }
 // --------------------------------------------- displayAll() ---------------------------------------------------------
@@ -77,26 +73,26 @@ public class LedgerManager
             System.out.println(transactions.get(i));
         }
     }
-// --------------------------------------------- displayDeposits() ----------------------------------------------------
-    public void displayDeposits()
+// --------------------------------------------- displaySales() -------------------------------------------------------
+    public void displaySales()
     {
         System.out.println();
-        System.out.println("   Now Displaying All Deposits...");
+        System.out.println("   Now Displaying All Sales...");
         System.out.println();
         printHeader();
         for (Transaction t : transactions)
         {
-            if (t.getAmount() > 0) // All elements in 'transactions' that has a positive 'amount' value will display
+            if (t.getAmount() > 0)    // All elements in 'transactions' that has a positive 'amount' value will display
             {
                 System.out.println(t);
             }
         }
     }
-// --------------------------------------------- displayPayments() ----------------------------------------------------
-    public void displayPayments()
+// --------------------------------------------- displayExpenses() ----------------------------------------------------
+    public void displayExpenses()
     {
         System.out.println();
-        System.out.println("   Now Displaying All Payments...");
+        System.out.println("   Now Displaying All Expenses...");
         System.out.println();
         printHeader();
         for (Transaction t : transactions)

@@ -3,6 +3,7 @@
 // DONE: Add try-catch in deposit() & payment() for 'date' user input.
 // DONE: Plug in DateTimeFormatter in all the report-filter methods to MMMM d, yyyy
 // DONE: Fix code, time is printing as date
+// DONE: Change to Boba Shop theme!
 // TODO: Create README file
 
 // ---------------------------------- Detail Tweaks --------------------------------------
