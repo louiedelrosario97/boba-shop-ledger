@@ -59,7 +59,7 @@ public class LedgerManager
     private void printHeader()
     {
         System.out.printf("%-10s | %-11s | %-30s | %-20s | %s%n", "Date", "Time", "Description", "Customer/Vendor", "Amount");
-        System.out.println("--------------------------------------------------------------------------------------");
+        System.out.println("------------------------------------------------------------------------------------------------");
     }
 // --------------------------------------------- displayAll() ---------------------------------------------------------
     public void displayAll()
@@ -68,7 +68,7 @@ public class LedgerManager
         System.out.println("   Now Displaying All Transactions...");
         System.out.println();
         printHeader();
-        for (int i = transactions.size() - 1; i >= 0; i--)
+        for (int i = transactions.size() - 1; i >= 0; i--) // Loops through entire array list, and goes backwards through the list so newest transactions appear first.
         {
             System.out.println(transactions.get(i));
         }
@@ -131,7 +131,7 @@ public class LedgerManager
         System.out.println("   Now Displaying Previous Month Transactions...");
         System.out.println();
         printHeader();
-        LocalDate prevMonth = LocalDate.now().minusMonths(1);
+        LocalDate prevMonth = LocalDate.now().minusMonths(1); // Gets today's date then subtracts one month to get last month's date.
 
         for (int i = transactions.size() - 1; i >= 0; i--)
         {

@@ -10,10 +10,7 @@ public class Main
    static Scanner scanner = new Scanner(System.in);
    static LedgerManager ledger = new LedgerManager();
 
-   static void main(String[] args)
-    {
-        homeScreen();
-    }
+   static void main(String[] args) { homeScreen(); }
 
     // ---------------------------------------- homeScreen() ----------------------------------------------------------
    static void homeScreen()
@@ -70,7 +67,7 @@ public class Main
             switch (choice)
             {
                 case "A": ledger.displayAll();      break;
-                case "S": ledger.displaySales(); break;
+                case "S": ledger.displaySales();    break;
                 case "E": ledger.displayExpenses(); break;
                 case "R": reportsScreen();          break;
                 case "H": homeScreen();             break;
@@ -133,8 +130,8 @@ public class Main
         System.out.println();
         System.out.println("NEW SALE:");
         System.out.println("-------------------");
-
-        DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy"); // Moved out of try-catch. Now in scope of 'Transaction newTransaction'
+        // Receive 'date' user input. Try-catch used to ensure correct date format is inputted
+        DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy"); // (04/30/2026 format) Moved out of try-catch. Now in scope of 'Transaction newTransaction'
         LocalDate saleDate = null;
         boolean dateInput = false;
         while (!dateInput) // LOGIC: By default the user input is false. If user enters a valid value for the DateTimeFormatter, then dateInput = true, ending the loop.
@@ -153,15 +150,15 @@ public class Main
                 System.out.println("Invalid entry. Please enter date in (MM/DD/YYYY) format.");
             }
         }
-
+        // Receive time user input
         String time = LocalTime.now().format(DateTimeFormatter.ofPattern("hh:mm:ss a")); // "hh:mm:ss a" creates 12-hour AM/PM format
-
+        // Receive description user input
         System.out.print("Item Sold: ");
         String description = scanner.nextLine();
-
+        // Receive customer/vendor user input
         System.out.print("Customer: ");
         String vendor = scanner.nextLine();
-
+        // Receive amount user input. Try-catch used to ensure number value is inputted AND if-else used to ensure positive number is inputted.
         double amount = 0;
         boolean amountInput = false;
         while (!amountInput)
@@ -184,7 +181,7 @@ public class Main
                 System.out.println("Invalid entry. Please enter only number values.");
             }
         }
-
+        // Creates a Transaction object using all the info we collected. saleDate.format() converts the LocalDate back to a String in our argument format
         Transaction newTransaction = new Transaction(saleDate.format(dtFormatter), time, description, vendor, amount);
         ledger.addTransaction(newTransaction);
 
