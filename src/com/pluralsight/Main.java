@@ -129,16 +129,16 @@ public class Main
         System.out.println("DEPOSIT INFO:");
         System.out.println("-------------------");
 
-        LocalDate depositDate = "";
+        DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy"); // Moved out of try-catch. Now in scope of 'Transaction newTransaction'
+        LocalDate depositDate = null;
         boolean dateInput = false;
-        while (!dateInput)
+        while (!dateInput) // LOGIC: By default the user input is false. If user enters a valid value for the DateTimeFormatter, then dateInput = true, ending the loop.
         {
             System.out.print("Date (MM/DD/YYYY): ");
             try
             {
-                String date = scanner.nextLine();                                                          // Logic: By default the user input is false.
-                DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");                 // If user enters a valid value for the DateTimeFormatter,
-                depositDate = LocalDate.parse(date, dtFormatter);                                          // then dateInput = true, ending the loop.
+                String date = scanner.nextLine();
+                depositDate = LocalDate.parse(date, dtFormatter);
                 dateInput = true;
             }
 
@@ -180,7 +180,7 @@ public class Main
             }
         }
 
-        Transaction newTransaction = new Transaction(transactionDate.format(dtFormatter), time, description, vendor, amount);
+        Transaction newTransaction = new Transaction(depositDate.format(dtFormatter), time, description, vendor, amount);
         ledger.addTransaction(newTransaction);
 
         System.out.println();
