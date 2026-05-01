@@ -129,15 +129,17 @@ public class Main
         System.out.println("DEPOSIT INFO:");
         System.out.println("-------------------");
 
-        String date;
-        while (true)
+        LocalDate depositDate = "";
+        boolean dateInput = false;
+        while (!dateInput)
         {
             System.out.print("Date (MM/DD/YYYY): ");
             try
             {
-                String date = scanner.nextLine();
-                DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-                LocalDate transactionDate = LocalDate.parse(date, dtFormatter);
+                String date = scanner.nextLine();                                                          // Logic: By default the user input is false.
+                DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");                 // If user enters a valid value for the DateTimeFormatter,
+                depositDate = LocalDate.parse(date, dtFormatter);                                          // then dateInput = true, ending the loop.
+                dateInput = true;
             }
 
             catch (Exception e)
