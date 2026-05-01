@@ -41,7 +41,7 @@ public class LedgerManager
                 line = bReader.readLine();
             }
             bReader.close();
-        } catch (IOException e) { System.out.println("No transaction data available."); }
+        } catch (IOException _) {}
     }
 // ----------------------------------------- addTransaction() ---------------------------------------------------------
     public void addTransaction(Transaction t)
@@ -58,7 +58,7 @@ public class LedgerManager
 // ----------------------------------------- printHeader() ---------------------------------------------------------
     private void printHeader()
     {
-        System.out.printf("%-14s | %-11s | %-20s | %-15s | %s%n", "Date", "Time", "Description", "Customer/Vendor", "Amount");
+        System.out.printf("%-10s | %-11s | %-30s | %-20s | %s%n", "Date", "Time", "Description", "Customer/Vendor", "Amount");
         System.out.println("--------------------------------------------------------------------------------------");
     }
 // --------------------------------------------- displayAll() ---------------------------------------------------------

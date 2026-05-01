@@ -21,9 +21,13 @@ public class Main
        boolean runningLoop = true; // Variable used to control the loop via "Close App"
        while(runningLoop)
        {
-           System.out.println();
-           System.out.println(" BOBA TEA ACCOUNTING ");
-           System.out.println("-------------------");
+           System.out.println("  ___       _         _____         ");
+           System.out.println(" | _ ) ___ | |__  __ |_   _|___  __ ");
+           System.out.println(" | _ \\/ _ \\| '_ \\/ _` || |/ -_) / _`|");
+           System.out.println(" |___/\\___/|_.__/\\__,_||_|\\___|\\__,_|");
+           System.out.println("       Boba Tea Shop Accounting v1.0       ");
+           System.out.println("=========================================");
+
            System.out.println("S) Record Sale");
            System.out.println("E) Record Expense");
            System.out.println("L) Open Ledger");

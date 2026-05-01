@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1d50e6fb-fced-4c69-a90c-2cb6935a2383" name="Changes" comment="// TODO: [ IN-PROGRESS ] Plug in datetimeformatter in all the report-filter methods to MMMM d, yyyy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/pluralsight/LedgerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pluralsight/LedgerManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/pluralsight/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pluralsight/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/pluralsight/TODOList" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pluralsight/TODOList" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/pluralsight/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pluralsight/Transaction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +111,7 @@
       <workItem from="1777337080686" duration="12718000" />
       <workItem from="1777363409334" duration="73214000" />
       <workItem from="1777589356726" duration="12543000" />
+      <workItem from="1777621745024" duration="1894000" />
     </task>
     <task id="LOCAL-00001" summary="loadTransactions() method built 90%">
       <option name="closed" value="true" />
@@ -343,6 +345,17 @@
     <MESSAGE value="// DONE: Add try-catch in deposit() &amp; payment() for 'date' user input." />
     <MESSAGE value="// TODO: [ IN-PROGRESS ] Plug in datetimeformatter in all the report-filter methods to MMMM d, yyyy" />
     <option name="LAST_COMMIT_MESSAGE" value="// TODO: [ IN-PROGRESS ] Plug in datetimeformatter in all the report-filter methods to MMMM d, yyyy" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/pluralsight/LedgerManager.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
