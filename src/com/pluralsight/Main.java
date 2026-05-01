@@ -43,6 +43,7 @@ public class Main
                    System.out.println("Invalid option. Please try again.");
            }
        }
+       System.out.println();
        System.out.println("Sayonara!");
    }
     // ---------------------------------------- ledgerScreen() --------------------------------------------------------
@@ -60,7 +61,7 @@ public class Main
             System.out.println("R) Report Search");
             System.out.println("H) (Back) to Home Screen");
             System.out.println("X) Close App");
-            System.out.println("Choose option: ");
+            System.out.print("Choose option: ");
             choice = scanner.nextLine().toUpperCase().strip();
 
             switch (choice)
@@ -87,6 +88,7 @@ public class Main
         boolean runningLoop = true;
         while(runningLoop)
         {
+            System.out.println();
             System.out.println("---- REPORTS ----");
             System.out.println("1) Month To Date");
             System.out.println("2) Previous Month");
@@ -116,7 +118,7 @@ public class Main
 
                 default:
                     System.out.println();
-                    System.out.println("Invalid option. Please try again.");
+                    System.out.println("Invalid entry. Please try again.");
             }
         }
         System.out.println();
@@ -145,7 +147,7 @@ public class Main
             catch (Exception e)
             {
                 System.out.println();
-                System.out.println("Invalid date format. Please enter date in (MM/DD/YYYY) format.");
+                System.out.println("Invalid entry. Please enter date in (MM/DD/YYYY) format.");
             }
         }
 
@@ -176,7 +178,7 @@ public class Main
             catch (NumberFormatException e)
             {
                 System.out.println();
-                System.out.println("Invalid amount. Please enter only number values.");
+                System.out.println("Invalid entry. Please enter only number values.");
             }
         }
 
@@ -209,7 +211,7 @@ public class Main
             catch (Exception e)
             {
                 System.out.println();
-                System.out.println("Invalid date format. Please enter date in (MM/DD/YYYY) format.");
+                System.out.println("Invalid entry. Please enter date in (MM/DD/YYYY) format.");
             }
         }
 
@@ -240,7 +242,7 @@ public class Main
             catch (NumberFormatException e)
             {
                 System.out.println();
-                System.out.println("Invalid amount. Please enter only number values.");
+                System.out.println("Invalid entry. Please enter only number values.");
             }
         }
 

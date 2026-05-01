@@ -1,8 +1,9 @@
 // -------------------------------- [ IMPORTANT TASKS ] ----------------------------------
 // DONE: Add try-catch in deposit() & payment() for 'amount' user input.
 // DONE: Add try-catch in deposit() & payment() for 'date' user input.
-// TODO: [ IN-PROGRESS ] Plug in datetimeformatter in all the report-filter methods to MMMM d, yyyy
+// DONE: Plug in DateTimeFormatter in all the report-filter methods to MMMM d, yyyy
 // DONE: Fix code, time is printing as date
+// TODO: Create README file
 
 // ---------------------------------- Detail Tweaks --------------------------------------
 // DONE: Change code so user has to enter date manually, changed to default date format for simplicity
@@ -12,6 +13,7 @@
 // DONE: Format categories so the columns align properly
 // DONE: Format time (remove nanoseconds, format to AM/PM time)
 // TODO: Add if there is no data available to display in each method
+// TODO: Fix case for 'Close App' in ledgerScreen() and reportsScreen(), does not close
 
 // ---------------------------------- LedgerManager --------------------------------------
 // DONE: Create LedgerManagement class

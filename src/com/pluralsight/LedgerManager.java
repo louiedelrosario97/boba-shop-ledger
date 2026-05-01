@@ -63,13 +63,14 @@ public class LedgerManager
     private void printHeader()
     {
         System.out.printf("%-14s | %-11s | %-20s | %-20s | %s%n", "Date", "Time", "Description", "Vendor", "Amount");
-        System.out.println("-------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------------------");
     }
 // --------------------------------------------- displayAll() ---------------------------------------------------------
     public void displayAll()
     {
         System.out.println();
         System.out.println("   Now Displaying All Transactions...");
+        System.out.println();
         printHeader();
         for (int i = transactions.size() - 1; i >= 0; i--)
         {
@@ -81,6 +82,7 @@ public class LedgerManager
     {
         System.out.println();
         System.out.println("   Now Displaying All Deposits...");
+        System.out.println();
         printHeader();
         for (Transaction t : transactions)
         {
@@ -95,6 +97,7 @@ public class LedgerManager
     {
         System.out.println();
         System.out.println("   Now Displaying All Payments...");
+        System.out.println();
         printHeader();
         for (Transaction t : transactions)
         {
@@ -107,6 +110,9 @@ public class LedgerManager
 // --------------------------------------------- monthToDate() --------------------------------------------------------
     public void monthToDate()
     {
+        System.out.println();
+        System.out.println("   Now Displaying Month To Date Transactions...");
+        System.out.println();
         printHeader();
         LocalDate now = LocalDate.now();
 
@@ -115,7 +121,7 @@ public class LedgerManager
             Transaction t = transactions.get(i);
             DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
             LocalDate date = LocalDate.parse(t.getDate(), dtFormatter);
-            // if statement filters for elements that have the same year and month as 'now'
+            // if-statement filters elements that have the same year and month as 'now'
             if (date.getYear() == now.getYear() && date.getMonthValue() == now.getMonthValue())
             {
                 System.out.println(t);
@@ -125,13 +131,17 @@ public class LedgerManager
 // --------------------------------------------- previousMonth() ------------------------------------------------------
     public void previousMonth()
     {
+        System.out.println();
+        System.out.println("   Now Displaying Previous Month Transactions...");
+        System.out.println();
         printHeader();
         LocalDate prevMonth = LocalDate.now().minusMonths(1);
 
         for (int i = transactions.size() - 1; i >= 0; i--)
         {
             Transaction t = transactions.get(i);
-            LocalDate date = LocalDate.parse(t.getDate());
+            DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+            LocalDate date = LocalDate.parse(t.getDate(), dtFormatter);
 
             if (date.getYear() == prevMonth.getYear() && date.getMonthValue() == prevMonth.getMonthValue())
             {
@@ -142,13 +152,17 @@ public class LedgerManager
 // --------------------------------------------- yearToDate() ---------------------------------------------------------
     public void yearToDate()
     {
+        System.out.println();
+        System.out.println("   Now Displaying Year To Date Transactions...");
+        System.out.println();
         printHeader();
         int currentYear = LocalDate.now().getYear();
 
         for (int i = transactions.size() - 1; i >= 0; i--)
         {
             Transaction t = transactions.get(i);
-            LocalDate date = LocalDate.parse(t.getDate());
+            DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+            LocalDate date = LocalDate.parse(t.getDate(), dtFormatter);
 
             if (date.getYear() == currentYear)
             {
@@ -159,13 +173,17 @@ public class LedgerManager
 // --------------------------------------------- previousYear() -------------------------------------------------------
     public void previousYear()
     {
+        System.out.println();
+        System.out.println("   Now Displaying Previous Year Transactions...");
+        System.out.println();
         printHeader();
         int previousYear = LocalDate.now().getYear() - 1;
 
         for (int i = transactions.size() - 1; i >= 0; i--)
         {
             Transaction t = transactions.get(i);
-            LocalDate date = LocalDate.parse(t.getDate());
+            DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+            LocalDate date = LocalDate.parse(t.getDate(), dtFormatter);
 
             if (date.getYear() == previousYear)
             {
